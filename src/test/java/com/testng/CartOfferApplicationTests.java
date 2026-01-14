@@ -103,9 +103,11 @@ public class CartOfferApplicationTests {
                 {applyOfferRequest(11,1,200),190},
                 {applyOfferRequest(11,2,200),180},
                 {applyOfferRequest(11,3,200),20},
+                {applyOfferRequest(11,4,200),200},
                 {applyOfferRequest(12,1,200),200},
                 {applyOfferRequest(12,2,50),0},
                 {applyOfferRequest(12,3,1000),0},
+                {applyOfferRequest(13,1,1111),1111},
 
 
         };
