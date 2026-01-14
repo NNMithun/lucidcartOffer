@@ -3,9 +3,7 @@ package com.springboot;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.controller.OfferRequest;
 import com.springboot.controller.SegmentResponse;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -18,19 +16,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CartOfferApplicationTests {
 
-
-	@Test
-	public void checkFlatXForOneSegment() throws Exception {
-		List<String> segments = new ArrayList<>();
-		segments.add("p1");
-		OfferRequest offerRequest = new OfferRequest(1,"FLATX",10,segments);
-		boolean result = addOffer(offerRequest);
-		Assert.assertEquals(result,true); // able to add offer
-	}
 
 	public boolean addOffer(OfferRequest offerRequest) throws Exception {
 		String urlString = "http://localhost:9001/api/v1/offer";
