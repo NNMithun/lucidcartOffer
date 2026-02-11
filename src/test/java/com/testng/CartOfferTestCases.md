@@ -1,9 +1,14 @@
-| Sl No | Test Case Description                                                   | Offer Type | Offer Value | User Segment | Restaurant Id | User Id | Cart Value | Expected Cart Value |
-|------:|-------------------------------------------------------------------------|-----------|-------------|--------------|---------------|---------|------------|---------------------|
-| 1     | Verify FLAT X amount off for Segment P1                                  | FLATX     | 10          | P1           | 11            | 1       | 200        | 190                 |
-| 2     | Verify FLAT % amount off for Segment P2                                  | FLAT%     | 10          | P2           | 11            | 2       | 200        | 180                 |
-| 3     | Verify FLAT % amount off for Segment P3                                  | FLAT%     | 90          | P3           | 11            | 3       | 200        | 20                  |
-| 4     | Verify no offer applied if user not part of segment                      | NA        | NA          | -            | 11            | 4       | 200        | 200                 |
-| 5     | Verify no offer applied when offer value is 0                            | FLATX     | 0           | P1           | 12            | 1       | 200        | 200                 |
-| 6     | Verify cart value does not go negative and becomes 0                     | FLATX     | 100         | P2           | 12            | 2       | 50         | 0                   |
-| 7     | Verify cart value becomes 0 when offer value is 100%                     | FLAT%     | 100         | P3           | 12            | 3       | 1000       | 0                   |
+| Sl No | Test Case Description                                                                    | Offer Type | Offer Value | User Segment | Restaurant Id | User Id | Cart Value | Expected Cart Value |
+|------:|------------------------------------------------------------------------------------------|------------|-------------|--------------|---------------|---------|------------|---------------------|
+|     1 | Verify FLAT X amount off for Segment P1                                                  | FLATX      | 10          | P1           | 11            | 1       | 200        | 190                 |
+|     2 | Verify FLAT % amount off for Segment P2                                                  | FLAT%      | 10          | P2           | 11            | 2       | 200        | 180                 |
+|     3 | Verify FLAT % amount off for Segment P3                                                  | FLAT%      | 90          | P3           | 11            | 3       | 200        | 20                  |
+|     4 | Verify no offer applied if user not part of segment                                      | NA         | NA          | -            | 11            | 4       | 200        | 200                 |
+|     5 | Verify no offer applied when offer value is 0                                            | FLATX      | 0           | P1           | 12            | 1       | 200        | 200                 |
+|     6 | Verify cart value does not go negative and becomes 0                                     | FLATX      | 100         | P2           | 12            | 2       | 50         | 0                   |
+|     7 | Verify cart value becomes 0 when offer value is 100%                                     | FLAT%      | 100         | P3           | 12            | 3       | 1000       | 0                   |
+|     8 | Verify cartValue dont go negative after offer when cartValue itself negative             | FLAT%      | 100         | P2           | 12            | 2       | -1000      | 0                   |
+|     9 | Verify no offer applied when user is entitled for p1 segment but restaurant has no offer | -          | -           | P2           | 15            | 2       | 500        | 500                 |
+|    10 | verify the error for invalid restaurantId like alphabets,specialchars                    | -          | -           | -            | a             | 2       | 500        | 400 Bad Request     |
+|    11 | verify the error for invalid userId like alphabets,specialchars                          | -          | -           | -            |               | b       | 500        | 400 Bad Request     |
+|    12 | verify the error for negative cart value  like alphabets,specialchars                    | -          | -           | -            | 15            | 2       | c          | 400 Bad Request     |

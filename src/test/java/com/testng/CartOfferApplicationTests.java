@@ -86,7 +86,7 @@ public class CartOfferApplicationTests {
 
 
     @Test(dataProvider ="offerData" )
-    public void verifyCartValue(ApplyOfferRequest applyOfferRequest, int expectedCartValue){
+    public void verifyCartValue(String description,    ApplyOfferRequest applyOfferRequest, int expectedCartValue){
        Response response=apiExecutor(applyOfferRequest,APPLY_OFFER_API);
         int actualCartValue=response.jsonPath().getInt("cart_value");
        Assert.assertEquals(actualCartValue,expectedCartValue);
@@ -100,14 +100,14 @@ public class CartOfferApplicationTests {
 
         return new Object[][]{
 
-                {applyOfferRequest(11,1,200),190},
-                {applyOfferRequest(11,2,200),180},
-                {applyOfferRequest(11,3,200),20},
-                {applyOfferRequest(11,4,200),200},
-                {applyOfferRequest(12,1,200),200},
-                {applyOfferRequest(12,2,50),0},
-                {applyOfferRequest(12,3,1000),0},
-                {applyOfferRequest(13,1,1111),1111},
+                {"Verify FLAT X amount off for Segment P1",applyOfferRequest(11,1,200),190},
+                {"Verify FLAT % amount off for Segment P2",applyOfferRequest(11,2,200),180},
+                {"Verify FLAT % amount off for Segment P3",applyOfferRequest(11,3,200),20},
+                {"Verify no offer applied if user not part of segment",applyOfferRequest(11,4,200),200},
+                {"Verify no offer applied when offer value is 0",applyOfferRequest(12,1,200),200},
+                {"Verify cart value does not go negative and becomes 0",applyOfferRequest(12,2,50),0},
+                {"Verify cart value becomes 0 when offer value is 100%",applyOfferRequest(12,3,1000),0},
+                {"Verify no offer applied when user is entitled for p1 segment but restaurant has no offer",applyOfferRequest(13,1,1111),1111},
 
 
         };
