@@ -10,3 +10,7 @@ steps:
       mavenPomFile: 'pom.xml'
       goals: 'clean package'
       publishJUnitResults: true
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'target'
+      ArtifactName: 'drop'
